@@ -1,5 +1,5 @@
 <?php
-
+print_r($_SERVER['DOCUMENT_ROOT']); exit();
 	if (isset($_REQUEST['phone'])) {
 		require $_SERVER['DOCUMENT_ROOT'].'/VA/ChargeBee/lib/ChargeBee.php';
 
