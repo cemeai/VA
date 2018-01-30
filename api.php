@@ -1,6 +1,6 @@
 <?php
 
-	if (isset($_REQUEST['phone']))
+	if (isset($_REQUEST['phone'])) {
 		require $_SERVER['DOCUMENT_ROOT'].'/ChargeBee/lib/ChargeBee.php';
 
 		ChargeBee_Environment::configure("vatoday-test","test_Gk4YTcKidSlp09GjYCGemgHUW5u3l7Yf");
@@ -47,4 +47,3 @@
 		var_dump($data); exit();
 		return json_encode($data);
 	}
-}
