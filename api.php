@@ -1,7 +1,7 @@
 <?php
 
 	if (isset($_REQUEST['phone'])) {
-		require $_SERVER['DOCUMENT_ROOT'].'/ChargeBee/lib/ChargeBee.php';
+		require $_SERVER['DOCUMENT_ROOT'].'/VA/ChargeBee/lib/ChargeBee.php';
 
 		ChargeBee_Environment::configure("vatoday-test","test_Gk4YTcKidSlp09GjYCGemgHUW5u3l7Yf");
 		$c;
