@@ -15,7 +15,7 @@
 				"sortBy[desc]" => "created_at",
 			)
 		);
-		if (isset($customers)) {
+		if (count($customers) > 0) {
 			foreach ($customers as $customer){
 				$c = $customer->customer();
 				$client_sent['name'] = $c->firstName.' '.$c->lastName;
@@ -28,7 +28,7 @@
 						"status[is]" => 'active',
 					)
 				);
-				if (isset($subs)) {
+				if (count($subs) > 0) {
 					foreach ($subs as $sub) {
 						$sub = $sub->subscription();
 						$success = true;
