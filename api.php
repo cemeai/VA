@@ -48,5 +48,5 @@
 			'success' => $success,
 			'customer' => $client_sent,
 		];
-		var_dump(json_encode($data)); exit();
+		echo (json_encode($data)); exit();
 	}
