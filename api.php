@@ -1,12 +1,12 @@
 <?php
-print_r($_SERVER['DOCUMENT_ROOT']); exit();
 	if (isset($_REQUEST['phone'])) {
-		require $_SERVER['DOCUMENT_ROOT'].'/VA/ChargeBee/lib/ChargeBee.php';
+		require 'Chargebee/lib/ChargeBee.php';
 
 		ChargeBee_Environment::configure("vatoday-test","test_Gk4YTcKidSlp09GjYCGemgHUW5u3l7Yf");
 		$c;
 		$mssg = 'Client found!';
 		$success = true;
+		$client_sent = array();
 		$customers = ChargeBee_Customer::all(
 			array(
 				"limit" => 1, 
@@ -17,6 +17,9 @@ print_r($_SERVER['DOCUMENT_ROOT']); exit();
 		if (isset($customers)) {
 			foreach ($customers as $customer){
 				$c = $customer->customer();
+				$client_sent['name'] = $c->firstName.' '.$c->lastName;
+				$client_sent['email'] = $c->email;
+				$client_sent['phone'] = $c->phone;
 				$subs = ChargeBee_Subscription::all(
 					array(
 						"limit" => 1, 
@@ -42,8 +45,8 @@ print_r($_SERVER['DOCUMENT_ROOT']); exit();
 		$data = [
 			'mssg' => $mssg,
 			'success' => $success,
-			'customer' => $c,
+			'customer' => $client_sent,
 		];
-		var_dump($data); exit();
+		// var_dump($data); exit();
 		return json_encode($data);
 	}
