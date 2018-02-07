@@ -8,7 +8,8 @@
 				require 'Chargebee/lib/ChargeBee.php';
 
 				ChargeBee_Environment::configure("vatoday","live_4UIhnNWkhlUunF3kb2n3UP9sB3ZPdqM0");
-				preg_match( '/^\+\d(\d{3})(\d{3})(\d{4})$/', $_REQUEST['phone'],  $number );
+				preg_match( '/^\+\d(\d{3})(\d{3})(\d{4})$/', '+'.$_REQUEST['phone'],  $number );
+				$number = $number[1].$number[2].$number[3];
 				$c;
 				$mssg = 'Client found!';
 				$success = true;
