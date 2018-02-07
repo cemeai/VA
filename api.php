@@ -7,7 +7,7 @@
 			if (isset($_REQUEST['phone'])) {
 				require 'Chargebee/lib/ChargeBee.php';
 
-				ChargeBee_Environment::configure("vatoday-test","test_Gk4YTcKidSlp09GjYCGemgHUW5u3l7Yf");
+				ChargeBee_Environment::configure("vatoday","live_4UIhnNWkhlUunF3kb2n3UP9sB3ZPdqM0");
 				$c;
 				$number = substr($_REQUEST['phone'], 2);
 				$mssg = 'Client found!';
