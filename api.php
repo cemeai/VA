@@ -1,13 +1,14 @@
 <?php
 	
 	$api_key = 'DK2H30D27C';
+	$data;
 
 	if (isset($_REQUEST['api_key'])) {
 		if ($_REQUEST['api_key'] == $api_key) {
+			require 'Chargebee/lib/ChargeBee.php';
+			ChargeBee_Environment::configure("vatoday","live_4UIhnNWkhlUunF3kb2n3UP9sB3ZPdqM0");
+			
 			if (isset($_REQUEST['phone'])) {
-				require 'Chargebee/lib/ChargeBee.php';
-
-				ChargeBee_Environment::configure("vatoday","live_4UIhnNWkhlUunF3kb2n3UP9sB3ZPdqM0");
 				preg_match( '/^\+\d(\d{3})(\d{3})(\d{4})$/', '+'.$_REQUEST['phone'],  $number );
 				$number = $number[1].$number[2].$number[3];
 				$c;
@@ -53,6 +54,25 @@
 					'mssg' => $mssg,
 					'success' => $success,
 					'customer' => $client_sent,
+				];
+			}
+
+			if (isset($_REQUEST['sub_id'])) {
+				$mssg = 'Client found!';
+				$success = true;
+				$client_sent = array();
+				$result = ChargeBee_Subscription::retrieve($_REQUEST['sub_id']);
+
+				$subscription = $result->subscription();
+				$customer = $result->customer();
+				$card = $result->card();
+
+				$data = [
+					'mssg' => $mssg,
+					'success' => $success,
+					'subscription' => $subscription->getValues(),
+					'customer' => $customer->getValues(),
+					'card' => $card->getValues(),
 				];
 			}
 		} else {
