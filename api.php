@@ -2,6 +2,7 @@
 	
 	$api_key = 'DK2H30D27C';
 	$data;
+	// B4eONwQk7rKMhg24
 
 	if (isset($_REQUEST['api_key'])) {
 		if ($_REQUEST['api_key'] == $api_key) {
@@ -70,9 +71,9 @@
 				$data = [
 					'mssg' => $mssg,
 					'success' => $success,
-					'subscription' => $subscription->getValues(),
-					'customer' => $customer->getValues(),
-					'card' => $card->getValues(),
+					'subscription' => isset($subscription)? $subscription->getValues(): NULL,
+					'customer' => isset($customer)? $customer->getValues(): NULL,
+					'card' => isset($card)? $card->getValues(): NULL,
 				];
 			}
 		} else {
